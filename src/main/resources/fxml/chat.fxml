@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox spacing="30.0" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fileoptimizer.app.controller.ChatController">
+    <children>
+        <HBox alignment="CENTER_LEFT" spacing="24.0" styleClass="card">
+            <children>
+                <VBox spacing="8.0" HBox.hgrow="ALWAYS">
+                    <children>
+                        <Label style="-fx-font-size: 18; -fx-font-weight: 700; -fx-text-fill: -app-text-main;" text="AI Assistant" />
+                        <Label style="-fx-text-fill: -app-text-muted;" text="Ask questions about your files or system health." />
+                    </children>
+                </VBox>
+
+                <Button text="Clear Chat History"
+                        styleClass="btn btn-outline"
+                        onAction="#handleClearChat"/>
+            </children>
+        </HBox>
+
+        <VBox spacing="20.0" VBox.vgrow="ALWAYS">
+            <children>
+                <ScrollPane fitToWidth="true" hbarPolicy="NEVER" style="-fx-background-color: transparent; -fx-background: transparent; -fx-border-color: -app-border; -fx-border-radius: 12;" VBox.vgrow="ALWAYS">
+                    <content>
+                        <VBox fx:id="chatHistory" spacing="15.0" style="-fx-padding: 20;">
+                            <children>
+                                <Label styleClass="chat-message-bubble" text="Hello! How can I help you optimize your system today?" wrapText="true" />
+                            </children>
+                        </VBox>
+                    </content>
+                </ScrollPane>
+
+                <HBox spacing="15.0" styleClass="card" style="-fx-padding: 15;">
+                    <children>
+                        <TextField fx:id="userInput" promptText="Type your message here..." styleClass="text-field" HBox.hgrow="ALWAYS" />
+                        <Button onAction="#handleSendMessage" prefHeight="45.0" prefWidth="120.0" style="-fx-background-radius: 25;" styleClass="btn btn-primary" text="Send" />
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+    </children>
+</VBox>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox spacing="30.0" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fileoptimizer.app.controller.DuplicateController">
+    <children>
+        <HBox alignment="CENTER_LEFT" spacing="24.0" styleClass="card">
+            <children>
+                <VBox spacing="8.0" HBox.hgrow="ALWAYS">
+                    <children>
+                        <Label style="-fx-font-size: 18; -fx-font-weight: 700; -fx-text-fill: -app-text-main;" text="Duplicate Finder" />
+                        <Label style="-fx-text-fill: -app-text-muted;" text="Identify and remove identical files to free up space." />
+                    </children>
+                </VBox>
+
+                <HBox alignment="CENTER" spacing="12.0">
+                    <children>
+                        <Button onAction="#handleSelectAll" styleClass="btn btn-outline" text="Select All" />
+                        <Button fx:id="btnScanDuplicates" onAction="#handleScanDuplicates" prefHeight="45.0" prefWidth="160.0" style="-fx-font-size: 15; -fx-background-radius: 25;" styleClass="btn btn-primary" text="Scan Duplicates" />
+                    </children>
+                </HBox>
+            </children>
+        </HBox>
+
+        <VBox spacing="20.0" VBox.vgrow="ALWAYS">
+            <children>
+                <HBox alignment="CENTER_LEFT" spacing="15.0">
+                    <children>
+                        <Label style="-fx-font-weight: 700; -fx-font-size: 15;" text="Duplicate Groups" />
+                        <Region HBox.hgrow="ALWAYS" />
+                        <Label fx:id="totalSizeLabel" style="-fx-text-fill: -app-danger; -fx-font-weight: bold;" text="Total Duplicates: 0 B" />
+                        <Button onAction="#handleDeleteSelected" styleClass="btn btn-danger" text="Delete Selected" />
+                    </children>
+                </HBox>
+
+                <TableView fx:id="duplicateTable" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="selectCol" prefWidth="50.0" text="Select" />
+                        <TableColumn fx:id="nameCol" prefWidth="300.0" text="File Name" />
+                        <TableColumn fx:id="sizeCol" prefWidth="100.0" text="Size" />
+                        <TableColumn fx:id="pathCol" prefWidth="400.0" text="Path" />
+                        <TableColumn fx:id="hashCol" prefWidth="150.0" text="File Hash" />
+                    </columns>
+                </TableView>
+            </children>
+        </VBox>
+    </children>
+</VBox>

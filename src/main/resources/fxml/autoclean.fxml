@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox spacing="30.0" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fileoptimizer.app.controller.AutoCleanController">
+    <children>
+        <HBox alignment="CENTER_LEFT" spacing="24.0" styleClass="card">
+            <children>
+                <VBox spacing="8.0" HBox.hgrow="ALWAYS">
+                    <children>
+                        <Label style="-fx-font-size: 18; -fx-font-weight: 700; -fx-text-fill: -app-text-main;" text="Auto Clean" />
+                        <Label style="-fx-text-fill: -app-text-muted;" text="Quickly cleanup system temporary files and recycle bin." />
+                    </children>
+                </VBox>
+                <VBox alignment="CENTER_RIGHT" spacing="10.0">
+                    <children>
+                        <Button fx:id="btnRunClean" onAction="#handleRunClean" prefHeight="45.0" prefWidth="160.0" style="-fx-font-size: 15; -fx-background-radius: 25;" styleClass="btn btn-primary" text="Run Auto Clean" />
+                        <ProgressBar fx:id="progressBar" prefWidth="160.0" progress="0.0" visible="false" />
+                    </children>
+                </VBox>
+            </children>
+        </HBox>
+
+        <VBox spacing="15.0" styleClass="card" VBox.vgrow="ALWAYS">
+            <children>
+                <Label style="-fx-font-size: 16; -fx-font-weight: 700;" text="Cleaning Logs" />
+                <TextArea fx:id="logArea" editable="false" styleClass="text-area" VBox.vgrow="ALWAYS" />
+            </children>
+        </VBox>
+    </children>
+</VBox>

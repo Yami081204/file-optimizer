@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.effect.DropShadow?>
+
+<ScrollPane fitToWidth="true"
+            prefHeight="700.0"
+            prefWidth="1000.0"
+            style="-fx-background-color: transparent; -fx-background: transparent; -fx-border-color: transparent;"
+            stylesheets="@../css/style.css"
+            xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.fileoptimizer.app.controller.DashboardController">
+
+    <content>
+        <VBox spacing="30.0" styleClass="content-area">
+            <children>
+
+                <GridPane hgap="20.0" vgap="20.0">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="ALWAYS" percentWidth="25.0" />
+                        <ColumnConstraints hgrow="ALWAYS" percentWidth="25.0" />
+                        <ColumnConstraints hgrow="ALWAYS" percentWidth="25.0" />
+                        <ColumnConstraints hgrow="ALWAYS" percentWidth="25.0" />
+                    </columnConstraints>
+
+                    <children>
+                        <VBox styleClass="card" GridPane.columnIndex="0">
+                            <children>
+                                <Label styleClass="stat-title" text="Total Files Found" />
+                                <Label fx:id="totalFilesLabel" styleClass="stat-value" text="0" />
+                            </children>
+                        </VBox>
+
+                        <VBox styleClass="card" GridPane.columnIndex="1">
+                            <children>
+                                <Label styleClass="stat-title" text="Total Storage Used" />
+                                <Label fx:id="totalSizeLabel" styleClass="stat-value" text="0 GB" />
+                            </children>
+                        </VBox>
+
+                        <VBox styleClass="card" GridPane.columnIndex="2">
+                            <children>
+                                <Label styleClass="stat-title" text="Junk Files Size" />
+                                <Label styleClass="stat-value" style="-fx-text-fill: -app-danger;" text="-" />
+                            </children>
+                        </VBox>
+
+                        <VBox styleClass="card" GridPane.columnIndex="3">
+                            <children>
+                                <Label styleClass="stat-title" text="Duplicate Files" />
+                                <Label styleClass="stat-value" style="-fx-text-fill: -app-warning;" text="-" />
+                            </children>
+                        </VBox>
+                    </children>
+
+                    <rowConstraints>
+                        <RowConstraints />
+                    </rowConstraints>
+                </GridPane>
+
+                <HBox spacing="30.0" alignment="CENTER" VBox.vgrow="ALWAYS">
+
+                    <children>
+
+                        <VBox prefWidth="550.0"
+                              alignment="CENTER"
+                              spacing="15.0"
+                              styleClass="card"
+                              HBox.hgrow="ALWAYS">
+
+                            <children>
+                                <Label style="-fx-font-size: 16; -fx-font-weight: 700;"
+                                       text="Storage Distribution" />
+
+                                <PieChart fx:id="sizeDistributionChart"
+                                          legendSide="RIGHT"
+                                          prefWidth="550"
+                                          prefHeight="380"
+                                          VBox.vgrow="ALWAYS" />
+                            </children>
+                        </VBox>
+
+                        <VBox alignment="CENTER"
+                              prefWidth="300.0"
+                              spacing="20.0"
+                              style="-fx-background-color: -app-primary; -fx-background-radius: 12; -fx-padding: 35;"
+                              HBox.hgrow="ALWAYS">
+
+                            <children>
+
+                                <Label style="-fx-font-size: 20; -fx-font-weight: 800; -fx-text-fill: white;"
+                                       text="Optimize Your PC" />
+
+                                <Text wrappingWidth="200.0"
+                                      style="-fx-fill: white; -fx-text-alignment: center; -fx-font-size: 13;"
+                                      text="Cleanup temporary files, duplicates, and reclaim your disk space now." />
+
+                                <Button onAction="#handleScanNow"
+                                        prefHeight="45.0"
+                                        prefWidth="180.0"
+                                        style="-fx-background-color: white;
+                                               -fx-text-fill: -app-primary;
+                                               -fx-font-size: 15;
+                                               -fx-font-weight: 700;
+                                               -fx-background-radius: 25;
+                                               -fx-cursor: hand;"
+                                        text="Scan Now" />
+
+                            </children>
+
+                            <effect>
+                                <DropShadow blurType="GAUSSIAN"
+                                            color="#00000029"
+                                            height="30.0"
+                                            radius="14.5"
+                                            width="30.0" />
+                            </effect>
+                        </VBox>
+
+                    </children>
+                </HBox>
+
+                <VBox spacing="15.0" styleClass="card" VBox.vgrow="ALWAYS">
+
+                    <children>
+
+                        <Label style="-fx-font-size: 16; -fx-font-weight: 700;"
+                               text="Recent Activity" />
+
+                        <TableView fx:id="activityTable"
+                                   minHeight="200.0"
+                                   prefHeight="200.0">
+
+                            <columns>
+                                <TableColumn prefWidth="150.0" text="Date" />
+                                <TableColumn prefWidth="400.0" text="Action" />
+                                <TableColumn prefWidth="150.0" text="Saved Space" />
+                            </columns>
+
+                        </TableView>
+
+                    </children>
+                </VBox>
+
+            </children>
+        </VBox>
+    </content>
+</ScrollPane>

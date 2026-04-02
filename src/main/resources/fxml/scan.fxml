@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Text?>
+
+<VBox spacing="30.0" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fileoptimizer.app.controller.ScanController">
+    <children>
+        <HBox alignment="CENTER_LEFT" spacing="24.0" styleClass="card">
+            <children>
+                <VBox spacing="8.0" HBox.hgrow="ALWAYS">
+                    <children>
+                        <Label style="-fx-font-size: 18; -fx-font-weight: 700; -fx-text-fill: -app-text-main;" text="Scan Engine" />
+                        <Label fx:id="statusLabel" style="-fx-text-fill: -app-text-muted;" text="Ready to scan for temporary and unnecessary files." />
+                    </children>
+                </VBox>
+
+                <HBox alignment="CENTER" spacing="12.0">
+                    <children>
+                        <Button fx:id="cancelButton" onAction="#handleCancel" prefHeight="45.0" prefWidth="120.0" style="-fx-font-size: 15; -fx-background-radius: 25;" styleClass="btn btn-outline" text="Cancel" visible="false" />
+                        <Button fx:id="scanButton" onAction="#handleScan" prefHeight="45.0" prefWidth="160.0" style="-fx-font-size: 15; -fx-background-radius: 25;" styleClass="btn btn-primary" text="Start Scanning" />
+                    </children>
+                </HBox>
+            </children>
+        </HBox>
+
+        <StackPane VBox.vgrow="ALWAYS">
+            <children>
+                <!-- Empty State (Shown before scan) -->
+                <VBox fx:id="emptyState" alignment="CENTER" spacing="20.0" styleClass="card" visible="true">
+                    <children>
+                        <Label style="-fx-font-size: 24; -fx-font-weight: 800; -fx-text-fill: #CBD5E1;" text="No scan results yet." />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: -app-text-muted; -fx-text-alignment: center;" text="Click 'Start Scanning' to find junk files and reclaim disk space." wrappingWidth="300.0" />
+                    </children>
+                </VBox>
+
+                <VBox fx:id="processingState" alignment="CENTER" spacing="30.0" styleClass="card" visible="false">
+                    <children>
+                        <Label style="-fx-font-size: 20; -fx-font-weight: 700;" text="Scanning System..." />
+                        <ProgressBar fx:id="progressBar" prefHeight="10.0" prefWidth="400.0" progress="0.0" />
+                        <Label fx:id="progressText" style="-fx-text-fill: -app-text-muted;" text="Initializing..." />
+                    </children>
+                </VBox>
+
+                <VBox fx:id="resultsState" spacing="20.0" visible="false">
+                    <children>
+                        <HBox alignment="CENTER_LEFT" spacing="15.0">
+                            <children>
+                                <Label style="-fx-font-weight: 700; -fx-font-size: 15;" text="Scan Results" />
+                                <Region HBox.hgrow="ALWAYS" />
+                                <Label fx:id="resultsSummaryLabel" style="-fx-text-fill: -app-text-muted;" text="Found 0 items (0 B)" />
+                                <Button onAction="#handleCleanAll" style="-fx-background-color: -app-success; -fx-text-fill: white;" styleClass="btn" text="Clean All" />
+                            </children>
+                        </HBox>
+
+                        <TableView fx:id="fileTable" VBox.vgrow="ALWAYS">
+                            <columns>
+                                <TableColumn fx:id="selectedColumn" prefWidth="50.0" text="Select" />
+                                <TableColumn fx:id="nameColumn" prefWidth="350.0" text="File Name" />
+                                <TableColumn fx:id="sizeColumn" prefWidth="120.0" text="Size" />
+                                <TableColumn fx:id="typeColumn" prefWidth="150.0" text="Category" />
+                                <TableColumn fx:id="dateColumn" prefWidth="250.0" text="Path" />
+                            </columns>
+                        </TableView>
+                    </children>
+                </VBox>
+            </children>
+        </StackPane>
+    </children>
+</VBox>
